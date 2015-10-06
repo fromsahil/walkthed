@@ -26,16 +26,20 @@ campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater];
 var selectedLocationsArray= [];
 
 function randomizeLocation() {
-	var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
-	for (i = 0; i<randomNumber1; i++) {
-		var randomNumber2 = Math.floor(Math.random()*allLocationsArray.length);
-		console.log(allLocationsArray[i]);
-		selectedLocationsArray.push(allLocationsArray[i]);
+	
+	var randomNumber2 = Math.floor(Math.random()*8);
+	for (i = 0; i<randomNumber2; i++) {
+		var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
+		console.log(allLocationsArray[randomNumber1]);
+		selectedLocationsArray.push(allLocationsArray[randomNumber1]);
+		//also need to check to make sure it's not already in the array
 	}
 }
 
 function returnLocations(){
-	
+	for (i=0; i<selectedLocationsArray.length; i++) {
+
+	}
 }
 
 randomizeLocation();
@@ -58,12 +62,23 @@ function initMap() {
 function calcRoute(directionsService, directionsDisplay) {
 	var grandCircusmap = new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]);
 	var joses = new google.maps.LatLng(42.335608, -83.046593);
+	function makeWaypoints() {
+		var waypts=[];
+		for (i=0; i<selectedLocationsArray.length; i++) {
+			waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
+							selectedLocationsArray[i].coordinates[1])});
+		};
+		return waypts;
+	};
 	directionsService.route({
 		origin: grandCircusmap,
 		destination: grandCircusmap,
-		waypoints: [{location: new google.maps.LatLng(detroitBikes.coordinates[0], detroitBikes.coordinates[1])},
-		{location: new google.maps.LatLng(joseTacos.coordinates[0], joseTacos.coordinates[1])},
-		{location: new google.maps.LatLng(detroitOperaHouse.coordinates[0], detroitOperaHouse.coordinates[1])}],
+
+		waypoints: 	makeWaypoints(),
+
+		// [{location: new google.maps.LatLng(detroitBikes.coordinates[0], detroitBikes.coordinates[1])},
+		// {location: new google.maps.LatLng(joseTacos.coordinates[0], joseTacos.coordinates[1])},
+		// {location: new google.maps.LatLng(detroitOperaHouse.coordinates[0], detroitOperaHouse.coordinates[1])}],
 		optimizeWaypoints: true,
 		travelMode: google.maps.TravelMode.WALKING
 	}, function(response, status) {
