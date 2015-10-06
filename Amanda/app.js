@@ -2,13 +2,17 @@
 
 
 
-function customlocation(name, x, y) {
+function customlocation(name, x, y, info) {
 	this.name = name;
-	this.coordinates = [x, y]
+	this.coordinates = [x, y];
+	this.someInfo = info
 }
 
-var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745);
-var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593);
+var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp");
+var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos");
+var pureDetroitGM = new customlocation ("Pure Detroit GM Renaissance Center", 42.36, -83.039795, "One of 3 Detroit's significant landmarks");
+var pureDetroitFisher = new customlocation ("Pure Detroit Fisher Building", 42.369803, -83.077457, "Another one of Pure Detroit's significant landmarks");
+var pureDetroit = new customlocation ("Pure Detroit", 42.329545, -83.04614, "Pure Detroit's Guardian Building location");
 
 var allLocationsArray = [grandCircus, joseTacos];
 
@@ -32,7 +36,11 @@ function calcRoute(directionsService, directionsDisplay) {
 	var joses = new google.maps.LatLng(42.335608, -83.046593);
 	directionsService.route({
 		origin: grandCircusmap,
-		destination: joses,
+		destination: grandCircusmap,
+		waypoints: [{location: new google.maps.LatLng(pureDetroitGM.coordinates[0], pureDetroitGM.coordinates[1])},
+		{location: new google.maps.LatLng(joseTacos.coordinates[0], joseTacos.coordinates[1])},
+		{location: new google.maps.LatLng(pureDetroitFisher.coordinates[0], pureDetroitFisher.coordinates[1])}],
+		optimizeWaypoints: true,
 		travelMode: google.maps.TravelMode.WALKING
 	}, function(response, status) {
 		if (status ===google.maps.DirectionsStatus.OK) {
@@ -42,4 +50,3 @@ function calcRoute(directionsService, directionsDisplay) {
 		}
 	});
 	}
-
