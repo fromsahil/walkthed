@@ -1,12 +1,16 @@
 // var grandCircusA = [42.335879, -83.049745];
 
-
-
+var APIresponse;
+var directionsService;
+var directionsDisplay;
+//create object
 function customlocation(name, x, y, info) {
 	this.name = name;
 	this.coordinates = [x, y];
 	this.someInfo = info
 }
+
+//create a few objects using the above constructor
 
 var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp");
 var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos");
@@ -20,56 +24,62 @@ var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catc
 var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!");
 var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred");
 
+//an array of all of the location objects
 var allLocationsArray = [grandCircus, joseTacos, detroitBikes, easternMarket, johnVarvatos, nojoKicks,
 campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater];
 
+//an empty array to hold random objects found
 var selectedLocationsArray= [];
 
+//this function chooses up to 8 random items from the locations array and pushes them to selected array
 function randomizeLocation() {
-	
 	var randomNumber2 = Math.floor(Math.random()*8);
 	for (i = 0; i<randomNumber2; i++) {
 		var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
 		console.log(allLocationsArray[randomNumber1]);
 		selectedLocationsArray.push(allLocationsArray[randomNumber1]);
-		//also need to check to make sure it's not already in the array
-	}
-}
-
-function returnLocations(){
-	for (i=0; i<selectedLocationsArray.length; i++) {
+		//****also need to check to make sure it's not already in the array*****
 
 	}
 }
+//just calling the function for now to make sure it's working (delete later)
 
-randomizeLocation();
 
 
+//initialize google maps. for now it is centered at grandcircus. it also
+//displays the written directions in a separate div
 function initMap() {
-	var directionsService = new google.maps.DirectionsService;
-	var directionsDisplay = new google.maps.DirectionsRenderer;
+	directionsService = new google.maps.DirectionsService;
+	directionsDisplay = new google.maps.DirectionsRenderer;
+	// var DirectionsRoute = new google.maps.DirectionsRoute;
 	var mapOptions = {
 	    center: new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]),
 	    scrollwheel: false,
 	    zoom: 15
 	  }
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById("directionsPanel"))
   calcRoute(directionsService, directionsDisplay);
 }
 
+//this generates random waypoints
+function makeWaypoints() {
+	randomizeLocation();
+	var waypts=[];
+	for (i=0; i<selectedLocationsArray.length; i++) {
+		waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
+						selectedLocationsArray[i].coordinates[1])});
+	};
+	return waypts;
+};
+
+
+//this function calculates routes. it creates waypoints from the random locations generated above.
+//the waypoint order is optimized.
 function calcRoute(directionsService, directionsDisplay) {
 	var grandCircusmap = new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]);
-	var joses = new google.maps.LatLng(42.335608, -83.046593);
-	function makeWaypoints() {
-		var waypts=[];
-		for (i=0; i<selectedLocationsArray.length; i++) {
-			waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
-							selectedLocationsArray[i].coordinates[1])});
-		};
-		return waypts;
-	};
+
 	directionsService.route({
 		origin: grandCircusmap,
 		destination: grandCircusmap,
@@ -84,8 +94,35 @@ function calcRoute(directionsService, directionsDisplay) {
 	}, function(response, status) {
 		if (status ===google.maps.DirectionsStatus.OK) {
 			directionsDisplay.setDirections(response);
+			APIresponse = response.routes[0].legs;
+			timeOfRoutes();
+			// console.log(APIresponse);
+			// console.log(response.routes[0].legs[0].duration.value);
+			// console.log(APIresponse.length);
 		} else {
 			window.alert("Directions request failed due to" + status);
 		}
 	});
 	}
+
+// find the total time for all of the route legs
+var totalTime = 0;
+
+function timeOfRoutes() {
+	for (i=0; i<APIresponse.length; i++) {
+		totalTime += APIresponse[i].duration.value;
+	}
+	console.log(totalTime);
+}
+
+//only return route if total route time is less than user entered time
+//**eventually need to have it check that route isn't too short either
+
+//sample variable
+var userInputMaxTime = 800;
+
+function checkRouteisRightLength() {
+	if (totalTime< timeOfRoutes) {
+		//make waypoints
+	}
+}
