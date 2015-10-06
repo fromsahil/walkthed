@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html nd-app="walkdad">
+<head>
+	<title>Walk Da the</title>
+
+	
+</head>
+<body>
+	
+    <div id="walk-display">
+
+      <h3> Walk Da D </h3>
+
+	 <div id="walkdad">
+			 <h4 ng-repeat="search in app"> "{{search}}" </h4>
+
+			<p class="p-tag">
+				<input ng-model="walksearch" type="form" class="form-control" id="walkform" placeholder="Lets Roll Detroit">
+				<a class="btn btn-default" role="button" href="#/"> Search </a>
+			</p>
+	   </div>
+	
+ 
+     </div>
+	
+
+	
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>	
+	
+	<script src="js/app.js"></script>
+
+	
+	
+
+</body>
+</html>
