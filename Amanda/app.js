@@ -4,7 +4,7 @@ var APIresponse;
 var directionsService;
 var directionsDisplay;
 var totalTime = 0;
-var userInputMaxTime = 1500;
+var userInputMaxTime = 3500;
 
 //create object
 function customlocation(name, x, y, info, time) {
@@ -44,10 +44,10 @@ function randomizeLocation() {
 	for (i = 0; i<randomNumber2; i++) {
 		var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
 		console.log(allLocationsArray[randomNumber1]);
-		selectedLocationsArray.push(allLocationsArray[randomNumber1]);
-		//****also need to check to make sure it's not already in the array*****
-		//indexof()
-
+		//check to make sure it's not already in the array
+		if (selectedLocationsArray.indexOf(allLocationsArray[randomNumber1])===-1) {
+			selectedLocationsArray.push(allLocationsArray[randomNumber1]);
+		}
 	}
 }
 
