@@ -17,24 +17,35 @@ function customlocation(name, x, y, info, time, type) {
 
 //create a few objects using the above constructor
 
-var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp");
-var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos");
-var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit!");
-var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!");
-var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories");
+var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp", 600, "Landmark");
+var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos", 1200, "Restaurant");
+var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit!", 600, "Shopping");
+var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories", 1200, "Shopping");
 var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique");
-var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and other festivities");
-var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play!");
-var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!");
-var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!");
-var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred");
-var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit");
-var joeLouisMonument = new customlocation ("Joe Louis Monument", 42.3286701, -83.0445116, "This represents one of the greatest boxers of all time, also known as 'The Fist' ");
+var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and other festivities", 1200, "Shopping");
+var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play!", 600, "Landmark");
+var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!", 600, "Landmark");
+var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!", 600, "Landmark");
+var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred", 600, "Landmark");
+var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit", 600, "Landmark");
+var joeLouisMonument = new customlocation ("Joe Louis Monument", 42.3286701, -83.0445116, "This represents one of the greatest boxers of all time, also known as 'The Fist' ", 600, "Landmark");
+var hartPlaza = new customlocation ("Hart Plaza", 42.327307, -83.0442621, "The area where Hart Plaza stands today is believed to be where Antoine Laumet de La Mothe, sieur de Cadillac landed in 1701", 600, "Landmark");
+var vicentes = new customlocation ("Vicente's Cuban Cuisine", 42.330522, -83.046867, "A great place to indulge in a Cuban lunch ", 1800, "Restaurant");
+var texasDeBrazil = new customlocation ("Texas De Brazil", 42.330522, -83.046867, "All you can eat steak house!", 1800, "Restaurant");
+var lafayetteConey = new customlocation ("Lafayette Coney Island", 42.330522, -83.046867, "Famous family owned and operated, since 1917", 1800, "Restaurant");
+var roast = new customlocation ("Roast", 42.330522, -83.046867 "Upscale Steakhouse", 1800, "Restaurant");
+var bucharest = new customlocation ("Bucharest Grill", 42.330522, -83.046867, "Get your middle eastern bites here!", 1800, "Restaurant");
+var fishbones = new customlocation ("Fishbones", 42.330522, -83.046867, "Cajun Dishes", 1800, "Restaurant");
+var sweetWaterTavern = new customlocation ("Sweet Water Tavern", 42.330522, -83.046867, "A great wing destination!", 1800, "Restaurant");
+var harborHouse = new customlocation ("Harbor House", 42.330522, -83.046867, "Historic Sea Food Restaurant in the city!", 1800, "Restaurant");
+var sportsMania = new customlocation ("Sports Mania", 42.330522, -83.046867, "Famous Detroit Sports Shop", 600, "Shopping");
+var towerBarber = new customlocation ("Tower Barber", 42.330522, -83.046867, "Get a haircut at Detroit's famous barber shop!", 1200, "Shopping");
+var detroitTattoo = new customlocation ("Detroit Tattoo Shop", 42.330522, -83.046867, "Pay a visit to Detroit's famous tattoo parlor ", 600, "Shopping");
 
 
 //an array of all of the location objects
-var allLocationsArray = [grandCircus, joseTacos, detroitBikes, easternMarket, johnVarvatos, nojoKicks,
-campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater, spiritOfDetroit, joeLouisMonument];
+var allLocationsArray = [grandCircus, joseTacos, detroitBikes, johnVarvatos, nojoKicks,
+campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater, spiritOfDetroit, joeLouisMonument, hartPlaza, vicentes, texasDeBrazil, roast, lafayetteConey, bucharest, fishbones, sweetWaterTavern, harborHouse, sportsMania, towerBarber, detroitTattoo];
 
 //an empty array to hold random objects found
 var selectedLocationsArray= [];
