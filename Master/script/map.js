@@ -10,7 +10,9 @@ var userInputMaxTime = 1500;
 function customlocation(name, x, y, info, time, type) {
 	this.name = name;
 	this.coordinates = [x, y];
-	this.someInfo = info
+	this.someInfo = info;
+	this.time = time;
+	this.type = type;
 }
 
 //create a few objects using the above constructor
@@ -26,10 +28,13 @@ var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197,
 var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!");
 var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!");
 var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred");
+var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit");
+var joeLouisMonument = new customlocation ("Joe Louis Monument", 42.3286701, -83.0445116, "This represents one of the greatest boxers of all time, also known as 'The Fist' ");
+
 
 //an array of all of the location objects
 var allLocationsArray = [grandCircus, joseTacos, detroitBikes, easternMarket, johnVarvatos, nojoKicks,
-campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater];
+campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater, spiritOfDetroit, joeLouisMonument];
 
 //an empty array to hold random objects found
 var selectedLocationsArray= [];
