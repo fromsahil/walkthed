@@ -1,8 +1,11 @@
-// var grandCircusA = [42.335879, -83.049745];
+// global variables (for now)
 
 var APIresponse;
 var directionsService;
 var directionsDisplay;
+var totalTime = 0;
+var userInputMaxTime = 1500;
+
 //create object
 function customlocation(name, x, y, info) {
 	this.name = name;
@@ -42,7 +45,7 @@ function randomizeLocation() {
 
 	}
 }
-//just calling the function for now to make sure it's working (delete later)
+
 
 
 
@@ -59,14 +62,16 @@ function initMap() {
 	  }
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   directionsDisplay.setMap(map);
+  console.log(directionsDisplay)
   directionsDisplay.setPanel(document.getElementById("directionsPanel"))
   calcRoute(directionsService, directionsDisplay);
 }
 
 //this generates random waypoints
 function makeWaypoints() {
-	randomizeLocation();
 	var waypts=[];
+	randomizeLocation();
+	
 	for (i=0; i<selectedLocationsArray.length; i++) {
 		waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
 						selectedLocationsArray[i].coordinates[1])});
@@ -83,7 +88,6 @@ function calcRoute(directionsService, directionsDisplay) {
 	directionsService.route({
 		origin: grandCircusmap,
 		destination: grandCircusmap,
-
 		waypoints: 	makeWaypoints(),
 
 		// [{location: new google.maps.LatLng(detroitBikes.coordinates[0], detroitBikes.coordinates[1])},
@@ -93,12 +97,19 @@ function calcRoute(directionsService, directionsDisplay) {
 		travelMode: google.maps.TravelMode.WALKING
 	}, function(response, status) {
 		if (status ===google.maps.DirectionsStatus.OK) {
-			directionsDisplay.setDirections(response);
 			APIresponse = response.routes[0].legs;
-			timeOfRoutes();
-			// console.log(APIresponse);
-			// console.log(response.routes[0].legs[0].duration.value);
-			// console.log(APIresponse.length);
+			var isRightLength = checkRouteisRightLength(timeOfRoutes());
+			if (isRightLength) {
+				directionsDisplay.setDirections(response);
+				document.getElementById("map").className="unhidden";
+				console.log(totalTime);
+				
+				// console.log(APIresponse);
+				// console.log(response.routes[0].legs[0].duration.value);
+				// console.log(APIresponse.length);
+			} else {
+				initMap();
+			}
 		} else {
 			window.alert("Directions request failed due to" + status);
 		}
@@ -106,23 +117,29 @@ function calcRoute(directionsService, directionsDisplay) {
 	}
 
 // find the total time for all of the route legs
-var totalTime = 0;
+
 
 function timeOfRoutes() {
 	for (i=0; i<APIresponse.length; i++) {
 		totalTime += APIresponse[i].duration.value;
 	}
-	console.log(totalTime);
+	return totalTime;
 }
+
+
 
 //only return route if total route time is less than user entered time
 //**eventually need to have it check that route isn't too short either
 
-//sample variable
-var userInputMaxTime = 800;
+//if route is NOT the right length, want to re-run init map, 
+//if it's the right length, continue
 
-function checkRouteisRightLength() {
-	if (totalTime< timeOfRoutes) {
-		//make waypoints
+
+function checkRouteisRightLength(time) {
+	var rightTime = (0 !== time && time < userInputMaxTime);
+	if (!rightTime) {
+		selectedLocationsArray= [];
+		totalTime=0;
 	}
+	return rightTime
 }
