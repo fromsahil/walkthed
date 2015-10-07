@@ -4,32 +4,36 @@ var APIresponse;
 var directionsService;
 var directionsDisplay;
 var totalTime = 0;
-var userInputMaxTime = 1500;
+var userInputMaxTime = 3500;
 
 //create object
-function customlocation(name, x, y, info) {
+function customlocation(name, x, y, info, time) {
 	this.name = name;
 	this.coordinates = [x, y];
-	this.someInfo = info
+	this.someInfo = info;
+	this.time = time;
+
 }
 
 //create a few objects using the above constructor
 
-var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp");
-var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos");
-var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit!");
-var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!");
-var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories");
-var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique");
-var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and other festivities");
-var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play!");
-var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!");
-var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!");
-var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred");
+var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp", 300);
+var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos", 500);
+var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit!", 300);
+var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!", 500);
+var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories", 300);
+var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique", 300);
+var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and other festivities", 600);
+var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play!", 400);
+var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!", 400);
+var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!", 500);
+var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred", 500);
 
 //an array of all of the location objects
 var allLocationsArray = [grandCircus, joseTacos, detroitBikes, easternMarket, johnVarvatos, nojoKicks,
 campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater];
+
+var justRestaurants= [];
 
 //an empty array to hold random objects found
 var selectedLocationsArray= [];
@@ -40,9 +44,10 @@ function randomizeLocation() {
 	for (i = 0; i<randomNumber2; i++) {
 		var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
 		console.log(allLocationsArray[randomNumber1]);
-		selectedLocationsArray.push(allLocationsArray[randomNumber1]);
-		//****also need to check to make sure it's not already in the array*****
-
+		//check to make sure it's not already in the array
+		if (selectedLocationsArray.indexOf(allLocationsArray[randomNumber1])===-1) {
+			selectedLocationsArray.push(allLocationsArray[randomNumber1]);
+		}
 	}
 }
 
@@ -123,6 +128,9 @@ function timeOfRoutes() {
 	for (i=0; i<APIresponse.length; i++) {
 		totalTime += APIresponse[i].duration.value;
 	}
+	for (i=0; i<selectedLocationsArray.length; i++) {
+		totalTime += selectedLocationsArray[i].time;
+	}
 	return totalTime;
 }
 
@@ -136,7 +144,7 @@ function timeOfRoutes() {
 
 
 function checkRouteisRightLength(time) {
-	var rightTime = (0 !== time && time < userInputMaxTime);
+	var rightTime = (0 !== time && time <= userInputMaxTime);
 	if (!rightTime) {
 		selectedLocationsArray= [];
 		totalTime=0;
