@@ -171,7 +171,7 @@ function calcRoute(directionsService, directionsDisplay) {
 function makeMarkers(response) {
 	for (i=0; i<response.legs.length-1; i++) {
 		response.legs[i+1].start_address = selectedLocationsArray[response.waypoint_order[i]].name + " : " + selectedLocationsArray[response.waypoint_order[i]].someInfo;
-		response.legs[i].end_address = "hot dogs";
+		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name;
 		// console.log(selectedLocationsArray[j]);
 		// console.log(selectedLocationsArray[j].someInfo);
 	}
@@ -218,6 +218,7 @@ function checkRouteisRightLength(time) {
 	}
 	return rightTime
 }
+
 
 
 google.maps.event.addDomListener(window, 'load', initMap);
