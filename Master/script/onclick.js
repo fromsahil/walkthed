@@ -9,7 +9,7 @@ function myFunction() {
 
 
 
-
+//if user clicks Use Current Location, populates the form with their current address
 function getLocation() {
 	navigator.geolocation.getCurrentPosition(function(pos) {
 		geocoder = new google.maps.Geocoder();
@@ -24,12 +24,13 @@ function getLocation() {
 
 
 
-
+//when user clicks submit, it checks whether the location is within bounds
  function checkLocation(position) {
  	navigator.geolocation.getCurrentPosition(function(pos) {
 		geocoder = new google.maps.Geocoder();
 		var address = document.getElementById("startingLocation").value;
 		console.log(address);
+
 		geocoder.geocode({'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				console.log(results);
@@ -37,21 +38,14 @@ function getLocation() {
 				var userLng= results[0].geometry.location.M;
 				if ((userLat<42.3225 || userLat>42.345) || (userLng<-83.067 || userLng>-83.0)) {
 					alert("Your starting address is not within our current limits.");
-				}
-        		
-
+					return false;
+				} else {
+        		myFunction();
+        			}
         	}
 		});
 	});
-    // if (42.325<latitude>42.345 && -83.0<longitude>-83.067) {
-    // 	var address = ***reverse geocode converted lat lng to text
-    // 	document.getElementById("startingLocation").value = address;
-    // }
-    // else {
-    // 	alert("Your starting address is not within our current limits.");
-    // }
-
-    // alert("Latitude : " + latitude + " Longitude: " + longitude);
+  
  }
 
 
