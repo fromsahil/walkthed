@@ -96,8 +96,6 @@ function randomizeLocation() {
 				selectedLocationsArray.push(filteredArray[randomNumber4]);
 			}
 		}
-		console.log(filteredArray);
-		console.log(selectedLocationsArray)
 	}
 }
 
@@ -154,6 +152,7 @@ function makeWaypoints() {
 			selectedLocationsArray[i].coordinates[1])});
 		};
 	}
+	console.log(i);
 	return waypts;
 };
 
