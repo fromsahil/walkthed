@@ -7,6 +7,10 @@
 var userLat= 0;
 var userLng= 0;
 
+// var defaultBounds = new google.maps.LatLngBounds(
+//   new google.maps.LatLng(42.3225, -83.067),
+//   new google.maps.LatLng(42.345, -83.0));
+
 function openMap() {
 	var userTime=getTimefromDropDown();
 	var userFilter=getTypefromDropDown()
@@ -73,10 +77,8 @@ function getTypefromDropDown() {
 }
 
 
-// autoCompleteSetup = function() {
-// 	autoSrc = new google.maps.places.Autocomplete(document.getElementById("startingLocation").dirSrc[0]);
-// 	// autoDest = new google.maps.places.Autocomplete($Selectors.dirDst[0]);
-// }
+ // var autocomplete = new google.maps.places.Autocomplete(input);
+ //  autocomplete.bindTo('startingLocation');
 
 
 

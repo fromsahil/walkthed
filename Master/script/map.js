@@ -24,6 +24,8 @@ function customlocation(name, x, y, info, time, type) {
 }
 
 
+
+
 //create a few objects using the above constructor
 
 var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp", 300, "landmark");
@@ -113,7 +115,36 @@ function initMap() {
 	var mapOptions = {
 	    center: new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]),
 	    scrollwheel: false,
-	    zoom: 15
+	    zoom: 15,
+	    styles: [
+  {
+    "featureType": "landscape",
+    "stylers": [
+      { "color": "#F3FFE2" }
+    ]
+  },{
+    "featureType": "road",
+    "stylers": [
+      { "color": "#225378" },
+      { "saturation": -19 },
+      { "lightness": 62 },
+      { "gamma": 2.38 }
+    ]
+  },{
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "color": "#225378" }
+    ]
+  },{
+    "featureType": "administrative",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "color": "#EB7F00" }
+    ]
+  },{
+    "featureType": "administrative",
+    "elementType": "labels"  }
+]
 	   
 	  }
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -202,7 +233,7 @@ function makeMarkers(response) {
 		response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
 			"</h3>"+"<p class='infoBody'>"+selectedLocationsArray[response.waypoint_order[i]].someInfo + "</p>";
 		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name + ". Spend " +
-			makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time) + " minutes here!</span>";
+			makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time) + " minutes here!";
 		// console.log(selectedLocationsArray[j]);
 		// console.log(selectedLocationsArray[j].someInfo);
 	}
