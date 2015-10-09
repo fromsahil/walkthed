@@ -65,7 +65,10 @@ function getTimefromDropDown() {
 }
 
 
-
+autoCompleteSetup = function() {
+	autoSrc = new google.maps.places.Autocomplete(document.getElementById("startingLocation").dirSrc[0]);
+	// autoDest = new google.maps.places.Autocomplete($Selectors.dirDst[0]);
+}
 
 
 

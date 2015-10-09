@@ -1,14 +1,59 @@
 html, body {
         color: #585858;
-        font-family: sans-serif;
         height: 96%;
-        margin: 2%;
-        padding: 2%;
+        margin: 1%;
+        padding: %;
+        font-family: 'Oswald', sans-serif;
+        margin-top: 0px;
       }
+
+header {
+	background-color: #BA5F28;
+	padding: 7px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: #FEFDFD;
+	width: 100%;
+
+}
+
+header h3, h1 {
+	font-weight: 300;
+	display: inline-block;
+}
 #map {
-        height: 80%;
-        width: 70%;
+		height: 90%;
+        width: 50%;
         margin: 10px;
         box-shadow: 1px 1px 4px 2px rgba(0,0,0 ,0.7);
+        font-family: 'Oswald', sans-serif;
+        border-radius: 10px;
+        display: inline-block;
         float: left;
       }
+
+ .infoHeader {
+ 	background-color: #BB895C;
+ 	padding: 5px;
+ 	font-family: 'Oswald', sans-serif;
+ 	color: #362C24;
+ }
+
+.infoBody {
+	font-family: 'Oswald', sans-serif;
+	color: #362C24;
+	margin: 2px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+#directionsPanel {
+	/*font-family: 'Oswald', sans-serif;*/
+	height: 100%;
+	width: 45%;
+	float: left;
+	padding-right: 0;
+	margin-right: 0;
+	color: red;
+}
+

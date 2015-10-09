@@ -170,7 +170,8 @@ function calcRoute(directionsService, directionsDisplay) {
 //make markers
 function makeMarkers(response) {
 	for (i=0; i<response.legs.length-1; i++) {
-		response.legs[i+1].start_address = selectedLocationsArray[response.waypoint_order[i]].name + " : " + selectedLocationsArray[response.waypoint_order[i]].someInfo;
+		response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
+			"</h3>"+"<p class='infoBody'>"+selectedLocationsArray[response.waypoint_order[i]].someInfo + "</p>";
 		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name;
 		// console.log(selectedLocationsArray[j]);
 		// console.log(selectedLocationsArray[j].someInfo);
