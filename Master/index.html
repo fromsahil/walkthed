@@ -22,7 +22,7 @@
                       
           <button class = "btn btn-default" type="button" id="currentLocation">
             Use current location</button>  
-            <p id="eat">Would you like to eat?</p>
+       <!--      <p id="eat">Would you like to eat?</p>
             <div class="radio">
               <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
@@ -33,19 +33,20 @@
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                 Yes
               </label>
-            </div>
+            </div> -->
 
         </div>
         
         <p>What would you like to see?</p>
-        <select class="form-control">
+
+        <select class="form-control" id="type">
           <option value="anything">Anything and Everything </option>
-          <option value="landmarks">History/Landmarks</option>
-          <option value="restaurants">Restaurants Only</option>
+          <option value="landmark">History/Landmarks</option>
           <option value="shopping">Shopping</option>
         </select>
 
         <p >How much time do you want to spend?</p>
+
           <select id="time" class="form-control">
             <option value="1800">30 min</option>
             <option value="2700">45 min</option>

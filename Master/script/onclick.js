@@ -9,9 +9,10 @@ var userLng= 0;
 
 function openMap() {
 	var userTime=getTimefromDropDown();
+	var userFilter=getTypefromDropDown()
 
 	// addParam(document.getElementById("startingLocation").value);
-    window.open("map.html?latitude="+userLat+"&longitude="+userLng+"&time="+userTime); 
+    window.open("map.html?latitude="+userLat+"&longitude="+userLng+"&time="+userTime+"&type="+userFilter); 
     
 
 }
@@ -64,11 +65,18 @@ function getTimefromDropDown() {
 
 }
 
+function getTypefromDropDown() {
+	var typeSelector= document.getElementById("type");
+	var selectedType= typeSelector.options[typeSelector.selectedIndex].value;
+	return selectedType;
 
-autoCompleteSetup = function() {
-	autoSrc = new google.maps.places.Autocomplete(document.getElementById("startingLocation").dirSrc[0]);
-	// autoDest = new google.maps.places.Autocomplete($Selectors.dirDst[0]);
 }
+
+
+// autoCompleteSetup = function() {
+// 	autoSrc = new google.maps.places.Autocomplete(document.getElementById("startingLocation").dirSrc[0]);
+// 	// autoDest = new google.maps.places.Autocomplete($Selectors.dirDst[0]);
+// }
 
 
 

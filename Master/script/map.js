@@ -5,17 +5,12 @@ var directionsService;
 var directionsDisplay;
 var totalTime = 0;
 var userInputMaxTime = getURLdata("time");
+var userInputType= getURLdata("type");
+var filteredArray= [];
 // var waypts=[];
 
 
-// delay loading of API until the submit button is clicked
-// function loadAPI()
-// {
-//     var script = document.createElement("script");
-//     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB045PY_LEotlWJNFA5rL29A7fth6vfgYw&signed_in=true&region=ES&callback=initMap";
-//     script.type = "text/javascript";
-//     document.getElementsByTagName("head")[0].appendChild(script);
-// }
+
 
 
 //create object
@@ -31,32 +26,32 @@ function customlocation(name, x, y, info, time, type) {
 
 //create a few objects using the above constructor
 
-var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp", 300, "Landmark");
+var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp", 300, "landmark");
 var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos", 500, "Restaurant");
-var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit!", 300, "Shopping");
-var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!", 500, "Landmark");
-var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories", 300, "Shopping");
-var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique", 300, "Shopping");
-var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and other festivities", 600, "Landmark");
-var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play!", 400, "Landmark");
-var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!", 400, "Landmark");
-var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!", 500, "Landmark");
-var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred", 500, "Landmark");
+var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit!", 300, "shopping");
+var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!", 500, "landmark");
+var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories", 300, "shopping");
+var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique", 300, "shopping");
+var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and other festivities", 600, "landmark");
+var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play!", 400, "landmark");
+var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they play!", 400, "landmark");
+var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue!", 500, "landmark");
+var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred", 500, "landmark");
 var sweetWaterTavern = new customlocation ("Sweet Water Tavern", 42.330522, -83.046867, "A great wing destination!", 1800, "Restaurant");
 var harborHouse = new customlocation ("Harbor House", 42.330522, -83.046867, "Historic Sea Food Restaurant in the city!", 1800, "Restaurant");
-var sportsMania = new customlocation ("Sports Mania", 42.330522, -83.046867, "Famous Detroit Sports Shop", 600, "Shopping");
-var towerBarber = new customlocation ("Tower Barber", 42.330522, -83.046867, "Get a haircut at Detroit's famous barber shop!", 1200, "Shopping");
-var detroitTattoo = new customlocation ("Detroit Tattoo Shop", 42.330522, -83.046867, "Pay a visit to Detroit's famous tattoo parlor ", 600, "Shopping");
-var gardellaFurniture = new customlocation ("Gardella Furniture", 42.3519252, -83.0320371, "Opened in 1939 by Louis Gardella Sr. This store targets mid to high furniture buyers with antiquated taste", 600, "Shopping");
-var spectacles = new customlocation ("Spectacles", 42.3358422, -83.0464188, "Trendy unisex clothing store", 600, "Shopping");
-var moosejaw = new customlocation ("Moosejaw", 42.3338298, -83.0489466, "More trendy unisex clothing!", 600, "Shopping");
-var detroitVsEverybody = new customlocation ("Detroit Vs Everybody", 42.334167, -83.0432783, "Detroit's famous clothing and accessories store", 1200, "Shopping");
-var detroitWaterIce = new customlocation ("Detroit Water Ice", 42.3324303, -83.0473459, "Mitch Albom's new Detroit Dessert place", 600, "Shopping");
-var slices = new customlocation ("Slices", 42.3325434, -83.0477701, "Get amazing pizza at a great price!", 600, "Shopping");
-var capitolPark = new customlocation ("Capitol Park", 42.3329106, -83.0494783, "Come see Detroit's famous landmark of liberty!", 600, "Landmark");
-var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit", 600, "Landmark");
-var joeLouisMonument = new customlocation ("Joe Louis Monument", 42.3286701, -83.0445116, "This represents one of the greatest boxers of all time, also known as 'The Fist' ", 600, "Landmark");
-var hartPlaza = new customlocation ("Hart Plaza", 42.327307, -83.0442621, "The area where Hart Plaza stands today is believed to be where Antoine Laumet de La Mothe, sieur de Cadillac landed in 1701", 600, "Landmark");
+var sportsMania = new customlocation ("Sports Mania", 42.330522, -83.046867, "Famous Detroit Sports Shop", 600, "shopping");
+var towerBarber = new customlocation ("Tower Barber", 42.330522, -83.046867, "Get a haircut at Detroit's famous barber shop!", 1200, "shopping");
+var detroitTattoo = new customlocation ("Detroit Tattoo Shop", 42.330522, -83.046867, "Pay a visit to Detroit's famous tattoo parlor ", 600, "shopping");
+var gardellaFurniture = new customlocation ("Gardella Furniture", 42.3519252, -83.0320371, "Opened in 1939 by Louis Gardella Sr. This store targets mid to high furniture buyers with antiquated taste", 600, "shopping");
+var spectacles = new customlocation ("Spectacles", 42.3358422, -83.0464188, "Trendy unisex clothing store", 600, "shopping");
+var moosejaw = new customlocation ("Moosejaw", 42.3338298, -83.0489466, "More trendy unisex clothing!", 600, "shopping");
+var detroitVsEverybody = new customlocation ("Detroit Vs Everybody", 42.334167, -83.0432783, "Detroit's famous clothing and accessories store", 1200, "shopping");
+var detroitWaterIce = new customlocation ("Detroit Water Ice", 42.3324303, -83.0473459, "Mitch Albom's new Detroit Dessert place", 600, "shopping");
+var slices = new customlocation ("Slices", 42.3325434, -83.0477701, "Get amazing pizza at a great price!", 600, "shopping");
+var capitolPark = new customlocation ("Capitol Park", 42.3329106, -83.0494783, "Come see Detroit's famous landmark of liberty!", 600, "landmark");
+var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit", 600, "landmark");
+var joeLouisMonument = new customlocation ("Joe Louis Monument", 42.3286701, -83.0445116, "This represents one of the greatest boxers of all time, also known as 'The Fist' ", 600, "landmark");
+var hartPlaza = new customlocation ("Hart Plaza", 42.327307, -83.0442621, "The area where Hart Plaza stands today is believed to be where Antoine Laumet de La Mothe, sieur de Cadillac landed in 1701", 600, "landmark");
 var vicentes = new customlocation ("Vicente's Cuban Cuisine", 42.330522, -83.046867, "A great place to indulge in a Cuban lunch ", 1800, "Restaurant");
 var texasDeBrazil = new customlocation ("Texas De Brazil", 42.330522, -83.046867, "All you can eat steak house!", 1800, "Restaurant");
 var lafayetteConey = new customlocation ("Lafayette Coney Island", 42.330522, -83.046867, "Famous family owned and operated, since 1917", 1800, "Restaurant");
@@ -74,18 +69,35 @@ hartPlaza, vicentes, texasDeBrazil, lafayetteConey, roast, bucharest, fishbones]
 
 var justRestaurants= [];
 
+
+
 //an empty array to hold random objects found
 var selectedLocationsArray= [];
 
 //this function chooses up to 8 random items from the locations array and pushes them to selected array
 function randomizeLocation() {
-	var randomNumber2 = Math.floor(Math.random()*8);
-	for (i = 0; i<randomNumber2; i++) {
-		var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
-		//check to make sure it's not already in the array
-		if (selectedLocationsArray.indexOf(allLocationsArray[randomNumber1])===-1) {
-			selectedLocationsArray.push(allLocationsArray[randomNumber1]);
+	if (userInputType==="anything") {
+		var randomNumber2 = Math.floor(Math.random()*8);
+		for (i = 0; i<randomNumber2; i++) {
+			var randomNumber1 = Math.floor(Math.random()*allLocationsArray.length);
+			//check to make sure it's not already in the array
+			if (selectedLocationsArray.indexOf(allLocationsArray[randomNumber1])===-1) {
+				selectedLocationsArray.push(allLocationsArray[randomNumber1]);
+			}
 		}
+	} else {
+		makeFilteredArray();
+		var randomNumber3 = Math.floor(Math.random()*8);
+
+		for (i = 0; i<randomNumber3; i++) {
+			var randomNumber4 = Math.floor(Math.random()* filteredArray.length);
+			//check to make sure it's not already in the array
+			if (selectedLocationsArray.indexOf(filteredArray[randomNumber4])===-1) {
+				selectedLocationsArray.push(filteredArray[randomNumber4]);
+			}
+		}
+		console.log(filteredArray);
+		console.log(selectedLocationsArray)
 	}
 }
 
@@ -115,15 +127,33 @@ function initMap() {
   
 }
 
+function makeFilteredArray() {
+	for (i=0; i<allLocationsArray.length; i++) {
+		console.log(allLocationsArray[i].type+","+userInputType)
+		if (allLocationsArray[i].type===userInputType) {
+			filteredArray.push(allLocationsArray[i]);
+		}
+		console.log(filteredArray);
+	}
+}
+
+
 //this generates random waypoints
 function makeWaypoints() {
 	var waypts=[];
 	randomizeLocation();
-	
-	for (i=0; i<selectedLocationsArray.length; i++) {
-		waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
-						selectedLocationsArray[i].coordinates[1])});
-	};
+
+	if (userInputType==="anything") {
+		for (i=0; i<selectedLocationsArray.length; i++) {
+			waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
+							selectedLocationsArray[i].coordinates[1])});
+		};
+	} else {
+		for (i=0; i<selectedLocationsArray.length; i++) {
+			waypts.push({location: new google.maps.LatLng(selectedLocationsArray[i].coordinates[0], 
+			selectedLocationsArray[i].coordinates[1])});
+		};
+	}
 	return waypts;
 };
 
@@ -132,7 +162,7 @@ function makeWaypoints() {
 //the waypoint order is optimized.
 function calcRoute(directionsService, directionsDisplay) {
 	//var grandCircusmap = new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]);
-	var userLat= getURLdata("latitude");
+		var userLat= getURLdata("latitude");
 		var userLong= getURLdata("longitude");
 	directionsService.route({
 		// origin: grandCircusmap,
@@ -172,7 +202,8 @@ function makeMarkers(response) {
 	for (i=0; i<response.legs.length-1; i++) {
 		response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
 			"</h3>"+"<p class='infoBody'>"+selectedLocationsArray[response.waypoint_order[i]].someInfo + "</p>";
-		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name;
+		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name + ". Spend " +
+			makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time) + " minutes here!</span>";
 		// console.log(selectedLocationsArray[j]);
 		// console.log(selectedLocationsArray[j].someInfo);
 	}
@@ -216,6 +247,7 @@ function checkRouteisRightLength(time) {
 	var rightTime = (0 !== time && time <= userInputMaxTime);
 	if (!rightTime) {
 		selectedLocationsArray= [];
+		filteredArray= [];
 		totalTime=0;
 	}
 	return rightTime
@@ -238,7 +270,14 @@ function getURLdata(variable) {
    
 }
 
-getURLdata("longitude");
+
+function makeMinutes(seconds){
+	var minutes = seconds/60;
+	return minutes;
+}
+
+
+
 
 
 google.maps.event.addDomListener(window, 'load', initMap);
