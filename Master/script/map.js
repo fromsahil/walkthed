@@ -4,8 +4,8 @@ var APIresponse;
 var directionsService;
 var directionsDisplay;
 var totalTime = 0;
-var userInputMaxTime = 3000;
-var waypts=[];
+var userInputMaxTime = getURLdata("time");
+// var waypts=[];
 
 
 // delay loading of API until the submit button is clicked
@@ -108,7 +108,6 @@ function initMap() {
 	  }
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   directionsDisplay.setMap(map);
-  console.log(directionsDisplay)
   directionsDisplay.setPanel(document.getElementById("directionsPanel"))
   calcRoute(directionsService, directionsDisplay);
 
@@ -132,19 +131,20 @@ function makeWaypoints() {
 //this function calculates routes. it creates waypoints from the random locations generated above.
 //the waypoint order is optimized.
 function calcRoute(directionsService, directionsDisplay) {
-	var grandCircusmap = new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]);
-
+	//var grandCircusmap = new google.maps.LatLng(grandCircus.coordinates[0], grandCircus.coordinates[1]);
+	var userLat= getURLdata("latitude");
+		var userLong= getURLdata("longitude");
 	directionsService.route({
-		origin: grandCircusmap,
-		destination: grandCircusmap,
-		// origin: document.getElementById("startingLocation").value,
-		// destination: document.getElementById("startingLocation").value,
+		// origin: grandCircusmap,
+		// destination: grandCircusmap,
+
+		origin: new google.maps.LatLng(userLat, userLong),
+		destination: new google.maps.LatLng(userLat, userLong),
 		waypoints: 	makeWaypoints(),
 		optimizeWaypoints: true,
 		travelMode: google.maps.TravelMode.WALKING
 	}, function(response, status) {
 		if (status ===google.maps.DirectionsStatus.OK) {
-			console.log(response);
 			APIresponse = response.routes[0];
 			var isRightLength = checkRouteisRightLength(timeOfRoutes());
 			if (isRightLength) {
@@ -154,7 +154,7 @@ function calcRoute(directionsService, directionsDisplay) {
 				document.getElementById("map").className="unhidden";
 				
 				
-				// console.log(APIresponse);
+				console.log(APIresponse);
 				// console.log(response.routes[0].legs[0].duration.value);
 				// console.log(APIresponse.length);
 			} else {
@@ -192,12 +192,13 @@ function makeMarkers(response) {
 
 
 function timeOfRoutes() {
-	for (i=0; i<APIresponse.length; i++) {
+	for (i=0; i<APIresponse.legs.length; i++) {
 		totalTime += APIresponse.legs[i].duration.value;
 	}
 	for (i=0; i<selectedLocationsArray.length; i++) {
 		totalTime += selectedLocationsArray[i].time;
 	}
+	console.log('total time : '+totalTime);
 	return totalTime;
 }
 
@@ -219,65 +220,26 @@ function checkRouteisRightLength(time) {
 	return rightTime
 }
 
+//[latitude=42.331427,longitude=-83.0457538]
+function getURLdata(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+           var pair = vars[i].split("=");
+           if(pair[0] === variable){
+           	return pair[1];
+           	
+           };
+       } 
+       console.log("this returned false");
+       return(false);
+       
+   
+}
+
+getURLdata("longitude");
 
 
 google.maps.event.addDomListener(window, 'load', initMap);
 
 
-
-
-		
- // function checkLocation(position) {
- //    var latitude = position.coords.latitude;
- //    var longitude = position.coords.longitude;
- //    //if (42.325<latitude>42.345 && -83.0<longitude>-83.067) {
- //    	//var address = ***reverse geocode converted lat lng to text
- //    	//document.getElementById("startingLocation").value = address;
- //    //}
- //    //else {
- //    // 	alert("That's not in our currently available box.");
- //    // }
-
- //    alert("Latitude : " + latitude + " Longitude: " + longitude);
- // }
-
- // function errorHandler(err) {
- //    if(err.code == 1) {
- //       alert("Sorry, access denied. Maybe you need to host on a local server!");
- //    }
-    
- //    else if( err.code == 2) {
- //       alert("Error: Position is unavailable!");
- //    }
- // }
-	
- // function getLocation(){
-
- //    if(navigator.geolocation){
- //       // timeout at 60000 milliseconds (60 seconds)
- //       var options = {timeout:60000};
- //       navigator.geolocation.getCurrentPosition(checkLocation, errorHandler, options);
- //    } else{
- //       alert("Sorry, browser does not support geolocation!");
- //    }
- // };
-
- // function convertToLL() {
- // // 	//take given address and return lat long
- // // 	//if (42.325<latitude>42.345 && -83.0<longitude>-83.067) {
- // //    	//var address = ***reverse geocode converted lat lng to text
- // //    	//document.getElementById("startingLocation").value = address;
- // //    	//loadAPI();
- // //    //} else {
- // //    	//alert("that's not in our little detroit box!")
- // //    //}
- // };
-
-
-//event listeners
-// var submit = document.getElementById("submitForm");
-// submit.addEventListener("click", loadAPI, false);
-
-// //click get current location, finds current location
-// var getLoc = document.getElementById("currentLocation");
-// getLoc.addEventListener("click", getLocation, false);

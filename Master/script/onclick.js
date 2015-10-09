@@ -3,8 +3,17 @@
 //    window.location.href = "map.html";
 //    console.log("do something");
 //}
-function myFunction() {
-    window.open("map.html"); 
+
+var userLat= 0;
+var userLng= 0;
+
+function openMap() {
+	var userTime=getTimefromDropDown();
+
+	// addParam(document.getElementById("startingLocation").value);
+    window.open("map.html?latitude="+userLat+"&longitude="+userLng+"&time="+userTime); 
+    
+
 }
 
 
@@ -29,24 +38,35 @@ function getLocation() {
  	navigator.geolocation.getCurrentPosition(function(pos) {
 		geocoder = new google.maps.Geocoder();
 		var address = document.getElementById("startingLocation").value;
-		console.log(address);
+		
 
 		geocoder.geocode({'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				console.log(results);
-				var userLat= results[0].geometry.location.J;
-				var userLng= results[0].geometry.location.M;
+				
+				userLat= results[0].geometry.location.J;
+				userLng= results[0].geometry.location.M;
 				if ((userLat<42.3225 || userLat>42.345) || (userLng<-83.067 || userLng>-83.0)) {
 					alert("Your starting address is not within our current limits.");
 					return false;
 				} else {
-        		myFunction();
+        		openMap();
         			}
         	}
 		});
 	});
-  
  }
+
+
+function getTimefromDropDown() {
+	var timeSelector= document.getElementById("time");
+	var selectedTime= timeSelector.options[timeSelector.selectedIndex].value;
+	return selectedTime;
+
+}
+
+
+
+
 
 
 
