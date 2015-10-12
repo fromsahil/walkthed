@@ -1,8 +1,8 @@
 
 body{
-    background: url(http://guardianlv.com/wp-content/uploads/2014/01/detroit_skyline___hdr_by_ii_mccloud_ii.jpg);
+    background: url(http://img.auctiva.com/imgdata/1/7/3/7/5/8/7/webimg/664629053_o.jpg);
 	background-color: #ffffff;
-    background: url(http://guardianlv.com/wp-content/uploads/2014/01/detroit_skyline___hdr_by_ii_mccloud_ii.jpg);   
+    /*background: url(http://img.auctiva.com/imgdata/1/7/3/7/5/8/7/webimg/664629053_o.jpg);*/   
 }
 #head1 {
 	background-color: #225378;
@@ -21,7 +21,10 @@ body{
 header h3, h1 {
 	font-weight: 300;
 	display: inline-block;
+	font-family: 'Oswald', sans-serif;
 }
+
+
 
 
 .vertical-offset-100{
@@ -50,7 +53,7 @@ header h3, h1 {
 }
 .panel-body {
 
-	background:#C7D1CB;
+	background:#E0E7EC;
 }
 .btn.outline {
     background: none;

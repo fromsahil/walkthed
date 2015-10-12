@@ -200,7 +200,7 @@ function calcRoute(directionsService, directionsDisplay) {
 
 		origin: new google.maps.LatLng(userLat, userLong),
 		destination: new google.maps.LatLng(userLat, userLong),
-		waypoints: 	makeWaypoints(),
+		waypoints: 	makeWaypoints(), 
 		optimizeWaypoints: true,
 		travelMode: google.maps.TravelMode.WALKING
 	}, function(response, status) {
@@ -233,7 +233,7 @@ function makeMarkers(response) {
 		response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
 			"</h3>"+"<p class='infoBody'>"+selectedLocationsArray[response.waypoint_order[i]].someInfo + "</p>";
 		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name + ". Spend " +
-			makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time) + " minutes here!";
+			Math.floor(makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time)) + " minutes here!";
 		// console.log(selectedLocationsArray[j]);
 		// console.log(selectedLocationsArray[j].someInfo);
 	}
@@ -306,8 +306,13 @@ function makeMinutes(seconds){
 	return minutes;
 }
 
+function reloadPage() {
+	window.location.reload();
+}
 
 
+var reroute = document.getElementById("reroute");
+reroute.addEventListener("click", reloadPage, false);
 
 
 google.maps.event.addDomListener(window, 'load', initMap);

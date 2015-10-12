@@ -13,7 +13,7 @@ var userLng= 0;
 
 function openMap() {
 	var userTime=getTimefromDropDown();
-	var userFilter=getTypefromDropDown()
+	var userFilter=getTypefromDropDown();
 
 	// addParam(document.getElementById("startingLocation").value);
     window.open("map.html?latitude="+userLat+"&longitude="+userLng+"&time="+userTime+"&type="+userFilter); 
