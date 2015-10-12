@@ -118,32 +118,35 @@ function initMap() {
 	    zoom: 15,
 	    styles: [
   {
-    "featureType": "landscape",
+    "featureType": "administrative",
+    "elementType": "labels.text.fill",
     "stylers": [
-      { "color": "#F3FFE2" }
+      { "hue": "#ff9100" },
+      { "saturation": 100 },
+      { "lightness": -30 }
     ]
   },{
     "featureType": "road",
+    "elementType": "geometry",
     "stylers": [
-      { "color": "#225378" },
-      { "saturation": -19 },
-      { "lightness": 62 },
-      { "gamma": 2.38 }
+      { "hue": "#0011ff" },
+      { "saturation": -100 },
+      { "lightness": 55 }
     ]
   },{
-    "elementType": "labels.text.fill",
+    "featureType": "landscape.man_made",
     "stylers": [
-      { "color": "#225378" }
+      { "hue": "#0091ff" }
     ]
   },{
-    "featureType": "administrative",
-    "elementType": "labels.text.fill",
+    "featureType": "poi",
+    "elementType": "geometry",
     "stylers": [
-      { "color": "#EB7F00" }
+      { "hue": "#002bff" },
+      { "saturation": -84 }
     ]
   },{
-    "featureType": "administrative",
-    "elementType": "labels"  }
+  }
 ]
 	   
 	  }

@@ -60,3 +60,9 @@ header h3, h1 {
     padding: 12px 22px;
 }
 
+.spinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 99999999999;
+    }
