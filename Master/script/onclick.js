@@ -17,7 +17,7 @@ function openMap() {
 	var userFilter=getTypefromDropDown();
 
 	// addParam(document.getElementById("startingLocation").value);
-    window.open("map.html?latitude="+userLat+"&longitude="+userLng+"&time="+userTime+"&type="+userFilter, '_self'); 
+    window.open("map.html?latitude="+userLat+"&longitude="+userLng+"&time="+userTime+"&type="+userFilter, "_self"); 
     
 
 }
@@ -49,9 +49,11 @@ function getLocation() {
 
 		geocoder.geocode({'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				
-				userLat= results[0].geometry.location.J;
-				userLng= results[0].geometry.location.M;
+				console.log(results);
+				console.log(results[0].geometry.location);
+				userLat= results[0].geometry.location.lat();
+				userLng= results[0].geometry.location.lng();
+				console.log(userLat);
 				if ((userLat<42.3225 || userLat>42.345) || (userLng<-83.067 || userLng>-83.0)) {
 					alert("Your starting address is not within our current limits.");
 					return false;

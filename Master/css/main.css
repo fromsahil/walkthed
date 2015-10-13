@@ -71,5 +71,22 @@ header h3, h1 {
 
 }
 
+.bold {
+	font-weight: bold;
+}
+
+.infoImg {
+	max-height: 75px;
+	display: inline-block;
+}
+
+.adp, .adp table {
+	font-family: 'Oswald', sans-serif;
+}
+
+.gm-style {
+	font-family: 'Oswald', sans-serif;
+}
+
 /*need media queries*/
 
