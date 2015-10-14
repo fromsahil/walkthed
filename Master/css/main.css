@@ -75,10 +75,12 @@ header h3, h1 {
 	font-weight: bold;
 }
 
-.infoImg {
-	max-height: 75px;
-	display: inline-block;
+.infoImg img {
+	max-width: 100%;
+	/*display: inline-block;*/
 }
+
+
 
 .adp, .adp table {
 	font-family: 'Oswald', sans-serif;

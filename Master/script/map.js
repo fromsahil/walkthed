@@ -7,6 +7,8 @@ var totalTime = 0;
 var userInputMaxTime = getURLdata("time");
 var userInputType= getURLdata("type");
 var filteredArray= [];
+var pinA;
+var waypts;
 // var waypts=[];
 
 
@@ -102,6 +104,7 @@ var justRestaurants= [];
 //an empty array to hold random objects found
 var selectedLocationsArray= [];
 
+
 //this function chooses up to 8 random items from the locations array and pushes them to selected array
 function randomizeLocation() {
 	if (userInputType==="anything") {
@@ -129,13 +132,14 @@ function randomizeLocation() {
 
 
 
+var map;
 
 //initialize google maps. for now it is centered at grandcircus. it also
 //displays the written directions in a separate div
 function initMap() {
 	directionsService = new google.maps.DirectionsService;
 	directionsDisplay = new google.maps.DirectionsRenderer({
-    suppressMarkers: false
+    suppressMarkers: true
 	});
 	// var DirectionsRoute = new google.maps.DirectionsRoute;
 	var mapOptions = {
@@ -143,46 +147,43 @@ function initMap() {
 	    scrollwheel: false,
 	    zoom: 15,
 	    styles: [
-  {
-    "featureType": "administrative",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      { "hue": "#ff9100" },
-      { "saturation": 100 },
-      { "lightness": -30 }
-    ]
-  },{
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      { "hue": "#0011ff" },
-      { "saturation": -100 },
-      { "lightness": 55 }
-    ]
-  },{
-    "featureType": "landscape.man_made",
-    "stylers": [
-      { "hue": "#0091ff" }
-    ]
-  },{
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      { "hue": "#002bff" },
-      { "saturation": -84 }
-    ]
-  },{
-  }
-]
+				  {
+				    "featureType": "administrative",
+				    "elementType": "labels.text.fill",
+				    "stylers": [
+				      { "hue": "#ff9100" },
+				      { "saturation": 100 },
+				      { "lightness": -30 }
+				    ]
+				  },{
+				    "featureType": "road",
+				    "elementType": "geometry",
+				    "stylers": [
+				      { "hue": "#0011ff" },
+				      { "saturation": -100 },
+				      { "lightness": 55 }
+				    ]
+				  },{
+				    "featureType": "landscape.man_made",
+				    "stylers": [
+				      { "hue": "#0091ff" }
+				    ]
+				  },{
+				    "featureType": "poi",
+				    "elementType": "geometry",
+				    "stylers": [
+				      { "hue": "#002bff" },
+				      { "saturation": -84 }
+				    ]
+				  },{
+				  }
+				]
 	   
 	  }
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById("directionsPanel"))
-  calcRoute(directionsService, directionsDisplay);
-
-
-  
+  calcRoute(directionsService, directionsDisplay);  
 }
 
 function makeFilteredArray() {
@@ -198,7 +199,7 @@ function makeFilteredArray() {
 
 //this generates random waypoints
 function makeWaypoints() {
-	var waypts=[];
+	waypts=[];
 	randomizeLocation();
 
 	if (userInputType==="anything") {
@@ -212,7 +213,6 @@ function makeWaypoints() {
 			selectedLocationsArray[i].coordinates[1])});
 		};
 	}
-	console.log(i);
 	return waypts;
 };
 
@@ -237,11 +237,12 @@ function calcRoute(directionsService, directionsDisplay) {
 			APIresponse = response.routes[0];
 			var isRightLength = checkRouteisRightLength(timeOfRoutes());
 			if (isRightLength) {
-				makeMarkers(APIresponse);
+				// makeMarkers(APIresponse);
 				directionsDisplay.setDirections(response);
 				document.getElementById("totaltime").innerHTML = Math.floor(makeMinutes(totalTime));
 				// document.getElementById("map").className="unhidden";
-				console.log(APIresponse);
+				// console.log(APIresponse);
+				customMarkers(response);
 		
 			} else {
 				initMap();
@@ -253,7 +254,7 @@ function calcRoute(directionsService, directionsDisplay) {
 	}
 
 
-//make markers
+//edit content in Google's default markers
 function makeMarkers(response) {
 	for (i=0; i<response.legs.length-1; i++) {
 		response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
@@ -262,20 +263,38 @@ function makeMarkers(response) {
 			"<div class='infoImg'><img src= '" + selectedLocationsArray[response.waypoint_order[i]].img + "'</></div>" ;
 		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name + ". Spend " +
 			Math.floor(makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time)) + " minutes here!";
-		// console.log(selectedLocationsArray[j]);
-		// console.log(selectedLocationsArray[j].someInfo);
-	}
-		// var marker = new google.maps.Marker({
-		// 	position: {lat: selectedLocationsArray[i].coordinates[0], lng: selectedLocationsArray[i].coordinates[1]},
-		// 	map: map,
-		// 	title: 'test'
-		// });
-		// marker.setMap(map);
-
-	// console.log(response);
+	}	
+}
 
 
+//custom markers more editable
+function customMarkers(response) {
+	var markers =[];
 	
+	for (i=0; i<waypts.length; i++) {
+		(function(){
+			var infowindow = new google.maps.InfoWindow({
+    			content: '<h3 class="infoHeader">'+selectedLocationsArray[response.routes[0].waypoint_order[i]].name +
+				"</h3>"+"<div class='infoBody'><p>"+selectedLocationsArray[response.routes[0].waypoint_order[i]].someInfo + "</p>" + 
+				"<p><a target='_blank' href='"+selectedLocationsArray[response.routes[0].waypoint_order[i]].link +"'>Website</a></p></div>" +
+				"<div class='infoImg'><img src= '" + selectedLocationsArray[response.routes[0].waypoint_order[i]].img + "'</></div>" 
+  			});
+
+			console.log(infowindow);
+			var newMarker = new google.maps.Marker({
+					position: new google.maps.LatLng(selectedLocationsArray[response.routes[0].waypoint_order[i]].coordinates[0], selectedLocationsArray[response.routes[0].waypoint_order[i]].coordinates[1]),
+					map: map,
+					animation: google.maps.Animation.DROP
+				});
+			newMarker.addListener('click', function() {
+	    		infowindow.open(map, newMarker);
+	    	});
+		//***use seperate function to loop through markers array and add event listeners?
+			markers.push(newMarker);
+		})();
+	}
+	// console.log(markers);
+	return markers;
 }
 
 // find the total time for all of the route legs
@@ -311,7 +330,7 @@ function checkRouteisRightLength(time) {
 	return rightTime
 }
 
-//[latitude=42.331427,longitude=-83.0457538]
+//get info from URL params
 function getURLdata(variable) {
        var query = window.location.search.substring(1);
        var vars = query.split("&");
