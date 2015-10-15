@@ -36,7 +36,7 @@ var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "B
 var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!", 500, "landmark", "", "");
 var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories. Spend <span class='bold'>five minutes</span> here.", 300, "shopping",
 	"http://www.johnvarvatos.com/on/demandware.store/Sites-johnvarvatos-Site/default?gclid=CJ3k3fLWtcgCFZWMaQoda-QM2g","https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTIfr5lA7Gy9dIOoqu_yh2_knQdhRr2XA5bTnfsLNCHSn8nCkrh");
-var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique. Add some glide to your stride. Spend <span class='bold'>eight minutes</span> here.", 
+var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique. Add some glide to your stride. Spend <span class='bold'>eight minutes</span> here.", 500,
 	"http://sneakerbardetroit.com/wp-content/uploads/2014/07/featured-11-low-681x383.jpg", "http://www.nojokicks.com");
 var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and a variety of festivities. Spend <span class= 'bold'>ten minutes</span> here.", 600, "landmark",
 	"http://campusmartiuspark.org/", "http://media.mlive.com/detroit/photo/2013/06/12955429-standard.jpg");
@@ -237,12 +237,17 @@ function calcRoute(directionsService, directionsDisplay) {
 			APIresponse = response.routes[0];
 			var isRightLength = checkRouteisRightLength(timeOfRoutes());
 			if (isRightLength) {
-				// makeMarkers(APIresponse);
+				makeMarkers(APIresponse);
 				directionsDisplay.setDirections(response);
 				document.getElementById("totaltime").innerHTML = Math.floor(makeMinutes(totalTime));
 				// document.getElementById("map").className="unhidden";
 				// console.log(APIresponse);
 				customMarkers(response);
+				var beachMarker = new google.maps.Marker({
+				    position: new google.maps.LatLng(userLat, userLong),
+				    map: map,
+				    icon: '/markerimgs/LocationMarkerHere.png'
+				  });
 		
 			} else {
 				initMap();
@@ -254,21 +259,26 @@ function calcRoute(directionsService, directionsDisplay) {
 	}
 
 
-//edit content in Google's default markers
+// edit content in Google's default markers
 function makeMarkers(response) {
 	for (i=0; i<response.legs.length-1; i++) {
-		response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
-			"</h3>"+"<div class='infoBody'><p>"+selectedLocationsArray[response.waypoint_order[i]].someInfo + "</p>" + 
-			"<p><a target='_blank' href='"+selectedLocationsArray[response.waypoint_order[i]].link +"'>Website</a></p></div>" +
-			"<div class='infoImg'><img src= '" + selectedLocationsArray[response.waypoint_order[i]].img + "'</></div>" ;
+		// response.legs[i+1].start_address = '<h3 class="infoHeader">'+selectedLocationsArray[response.waypoint_order[i]].name +
+		// 	"</h3>"+"<div class='infoBody'><p>"+selectedLocationsArray[response.waypoint_order[i]].someInfo + "</p>" + 
+		// 	"<p><a target='_blank' href='"+selectedLocationsArray[response.waypoint_order[i]].link +"'>Website</a></p></div>" +
+		// 	"<div class='infoImg'><img src= '" + selectedLocationsArray[response.waypoint_order[i]].img + "'</></div>" ;
 		response.legs[i].end_address += " : " + selectedLocationsArray[response.waypoint_order[i]].name + ". Spend " +
 			Math.floor(makeMinutes(selectedLocationsArray[response.waypoint_order[i]].time)) + " minutes here!";
 	}	
 }
 
 
+
+
 //custom markers more editable
 function customMarkers(response) {
+	var markerImgs = ['markerimgs/LocationMarkerA-new.png', 'markerimgs/LocationMarkerB.png', 'markerimgs/LocationMarkerC.png', 'LocationMarkerD.png',
+'markerimgs/LocationMarkerE.png', 'markerimgs/LocationMarkerF.png', 'markerimgs/LocationMarkerG.png', 'markerimgs/LocationMarkerH.png']
+
 	var markers =[];
 	
 	for (i=0; i<waypts.length; i++) {
@@ -284,6 +294,8 @@ function customMarkers(response) {
 			var newMarker = new google.maps.Marker({
 					position: new google.maps.LatLng(selectedLocationsArray[response.routes[0].waypoint_order[i]].coordinates[0], selectedLocationsArray[response.routes[0].waypoint_order[i]].coordinates[1]),
 					map: map,
+					flat: true,
+					icon: markerImgs[i],
 					animation: google.maps.Animation.DROP
 				});
 			newMarker.addListener('click', function() {

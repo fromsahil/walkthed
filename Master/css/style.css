@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden;
-    
+    font-family: 'Alegreya';
        
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -9,11 +9,24 @@ body {
 }
 .navbar-collapse {
   text-align:center;
-
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
 }
+
+
+.navbar-default .navbar-nav li a {
+    color: white;
+    height: 10% !important;
+}
+
+
+
 .navbar-nav {
     display:inline-block;
     float:none;
+    padding-top: 20px;
 }
 header {
     position: relative;
@@ -21,18 +34,27 @@ header {
     min-height: auto;
     text-align: center;
     color: black;
-    
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    height: 100%;
+}
+
+#homepage {
+    padding: 10%;
+    margin-top: 45%;
+    background-color: rgba(255, 255, 255,0.5);
 }
 
 header .header-content {
-    position: relative;
-    width: 100%;
-    padding: 100px 15px;
+  
+   /* top: 200px;*/
+    width: auto;
+    height: 100%;
+    padding-top: 10%;
+   /* padding: 90px 15px;*/
     text-align: center;
 }
 
@@ -41,6 +63,40 @@ header .header-content .header-content-inner h1 {
     margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 700;
+    text-align: center;
+}
+
+#startInfo {
+    height: 100%;
+}
+
+#startInfo div {
+    padding: 150px;
+    height: 100%;
+}
+
+#mapInfo {
+    margin-top: -20%;
+    padding-top: -200%;
+}
+
+#aboutUs {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 50%;
+    padding-top: 18%;
+    text-align: center
+}
+
+#comingSoon {
+    padding-top: 20%;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+}
+
+.sectionContent {
+    width: 40%;
+    text-align: center;
+    margin-left: 30%;
 }
 
 header .header-content .header-content-inner hr {
@@ -75,10 +131,12 @@ section h2.section-heading {
 section h3.section-subheading {
     margin-bottom: 75px;
     text-transform: none;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Alegreya","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
     font-style: italic;
     font-weight: 400;
+    margin-bottom: 0;
+    color: #EB7F00;
 }
 
 @media(min-width:768px) {
@@ -94,6 +152,8 @@ section h3.section-subheading {
 .dim {
   opacity: 0.6;
 }
+
+
 .spinner {
       position: fixed;
       top: 50%;
