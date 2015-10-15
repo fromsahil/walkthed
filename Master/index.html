@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
-<body>
+<body id="page-top">
 <div class="container">
   <div class="navbar navbar-default navbar-fixed-top" >
     
@@ -21,7 +21,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-center">
-          <li ><a class="page-scroll" href="#">HOME</a></li>
+          <li ><a class="page-scroll" href="#page-top">HOME</a></li>
           <li ><a class="page-scroll" href="#aboutUs">ABOUT D-TOUR</a></li>
           <li><a class="navbar-brand" href="#"><img style="width:85px; height:85px; margin-top:-14px" src="img/d_tour_logo.png"></a></li>
           <li><a class="page-scroll" href="#comingSoon">COMING SOON</a></li>
@@ -33,7 +33,7 @@
     </div>
   </div>
   <header >
-      <div class="sectionContent">
+      <div class="sectionContent" id="sectionContent">
       <div class="row">
         <div class="col-xs-12 text-center" id="homepage">
 <!--     <div class="header-content" class="sectionContent" id="startInfo">
@@ -83,7 +83,7 @@
                     <option value="shopping">Shopping</option>
                   </select>
 
-                  <p >How much time do you want to spend?</p>
+                  <p>How much time do you want to spend?</p>
                   <select id="time" class="form-control">
                 <!--option value="1800">30 min</option>
                 <option value="2700">45 min</option-->
@@ -97,7 +97,7 @@
 
 
 
-                <div class="text-center">
+                <div class="text-center" id="submitBtn">
                   <input class="btn btn-default" value="Submit" id="submitForm" >
                 </div>
                 <div id="spinner"></div>
@@ -206,7 +206,8 @@
         </div>
       </section>
       <!-- jQuery -->
-      <script src="libs/jquery/jquery.js"></script>
+      <script src="js/jquery.js"></script>
+      <script src="js/jquery-ui.js"></script>
       <!-- Backstrech Core Javascript-->
       <script src="js/jquery.backstretch.js"></script>
       
