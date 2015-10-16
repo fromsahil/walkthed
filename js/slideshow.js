@@ -6,11 +6,11 @@ $(document).ready(function(){
 	$.backstretch(
 		[
 
-		"img/The_Sweep.jpg",
-		"img/chrysler-house-exterior-452x452.jpg",
-		"img/tumblr_meb2l8WLyx1rkc1w2o1_1280.jpg",
-		"img/Best-Spring-Activities-in-Detroit-Peruse-Farmers-Markets.jpg",
-		"img/joelouis.jpg"
+		"img/img1.jpg",
+		"img/img2.jpg",
+		"img/img3.jpg",
+		"img/img4.jpg",
+		"img/img5.jpg"
 		], 
 		{
 			fade: 2500,
