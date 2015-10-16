@@ -133,7 +133,7 @@ var map;
 
 //initialize google maps. for now it is centered at grandcircus. it also
 //displays the written directions in a separate div
-function initMap() {
+function initialize() {
 	directionsService = new google.maps.DirectionsService;
 	directionsDisplay = new google.maps.DirectionsRenderer({
     suppressMarkers: true
@@ -177,7 +177,7 @@ function initMap() {
 				]
 	   
 	  }
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById("directionsPanel"))
   calcRoute(directionsService, directionsDisplay);  
@@ -374,6 +374,6 @@ var reroute = document.getElementById("reroute");
 reroute.addEventListener("click", reloadPage, false);
 
 
-google.maps.event.addDomListener(window, 'load', initMap);
+google.maps.event.addDomListener(window, 'load', initialize);
 
 
