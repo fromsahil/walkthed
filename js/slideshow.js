@@ -14,7 +14,7 @@ $(document).ready(function(){
 		], 
 		{
 			fade: 2500,
-			duration: 2000
+			duration: 8000
 		});
 	
 

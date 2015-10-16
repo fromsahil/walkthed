@@ -28,69 +28,66 @@ function customlocation(name, x, y, info, time, type, link, img) {
 }
 
 
-var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp. Spend <span class='bold'>five minutes</span> here.", 300, "landmark", "http://grandcircus.co", "https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/115/grand_circus.png");
+var fishbones = new customlocation ("Fishbones", 42.330522, -83.046867, "Cajun Dishes. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.fishbonesusa.com", "img/mapImgs/fishbone.jpg");
+var henryTheHatter = new customlocation ("Henry the Hatter", 42.334647, -83.0481404, "Detroit's exclusive hatter since 1893! Spend <span class='bold'>ten minutes</span> here.", 600, "shopping", "http://www.henrythehatterdetroit.com", "img/mapImgs/henry.jpg");
+var detroitVape = new customlocation ("Detroit Vape and Hookah shop", 42.335512, -83.0490816, "For all hookah lovers! Spend <span class='bold'>twenty minutes</span> here.", 1200, "shopping", "http://www.yelp.com › shopping › Vape Shops", "img/mapImgs/vape.jpg");
+var hazenMonument = new customlocation ("Hazen S. Pingree Monument", 42.3368128, -83.0532194, "The Hazen S. Pingree Monument honors a man who served as Detroit mayor from 1890 to 1897.  He was known as the 'idol of people'. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://historicdetroit.org/building/hazen-s-pingree-monument", "img/mapImgs/hazen.jpg");
+var cotterMonument = new customlocation ("William Cotter Maybury Monument", 42.3370085, -83.0527677, "There’s a mustachioed mayor kicking back in Grand Circus Park. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://www.historicdetroit.org/building/william-cotter-maybury-monument", "img/mapImgs/hazen.jpg");
+var russelFountain = new customlocation ("Russell A. Alger Memorial Fountain", 42.336863, -83.0521217, "The monument features a bronze statue of a woman about 7 feet tall wearing a headdress and a flowing gown and carrying a sword and a shield that bears the state seal. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "https://www.linkedin.com/pub/dir/Russell/Fountain", "img/mapImgs/russell.jpg");
+var edisonFountain = new customlocation ("Edison Memorial Fountain", 42.3363073, -83.0534703, "Created to honor Thomas Alva Edison and his achievements. Spend <span class='bold'>thirty minutes</span> here.", 600, "landmark", "http://www.historicdetroit.org/building/edison-memorial-fountain/", "img/mapImgs/edison,jpg");
+var grandCircus = new customlocation ("Grand Circus", 42.335879, -83.049745, "A programming bootcamp. Spend <span class='bold'>five minutes</span> here.", 300, "landmark", "http://grandcircus.co", "img/mapImgs/grand_circus.png");
 var joseTacos = new customlocation ("Jose's Tacos", 42.335608, -83.046593, "Great place for tacos, and best chicken tacos ever. Spend <span class='bold'>eight minutes</span> here." , 500, "restaurant",
-	"http://www.yelp.com/biz/joses-tacos-detroit");
+    "img/mapImgs/josetacos.jpg");
 var detroitBikes = new customlocation ("Detroit Bikes", 42.33313, -83.048943, "Bicycles manufactured right here in Detroit! Check out the variety of bikes and assortment of colors. Spend <span class='bold'>", 300, "shopping",
- "http://detroitbikes.com/", "http://brimages.bikeboardmedia.netdna-cdn.com/wp-content/uploads/2013/08/Detroit-Bikes-A-Type-.png");
-var easternMarket = new customlocation ("Eastern Market", 42.34556, -83.04306, "Fresh Food!", 500, "landmark", "", "");
+"http://detroitbikes.com/", "img/mapImgs/detroitbikes.png");
 var johnVarvatos = new customlocation ("John Varvatos", 42.335133, -83.049261, "Take a gander at Detroit's born an raised fashion designer John Varvatos clothing and accessories. Spend <span class='bold'>five minutes</span> here.", 300, "shopping",
-	"http://www.johnvarvatos.com/on/demandware.store/Sites-johnvarvatos-Site/default?gclid=CJ3k3fLWtcgCFZWMaQoda-QM2g","https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTIfr5lA7Gy9dIOoqu_yh2_knQdhRr2XA5bTnfsLNCHSn8nCkrh");
-var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983, -83.0463134, "Detroit's famous sneaker boutique. Add some glide to your stride. Spend <span class='bold'>eight minutes</span> here.", 500,
-	"http://sneakerbardetroit.com/wp-content/uploads/2014/07/featured-11-low-681x383.jpg", "http://www.nojokicks.com");
+    "http://www.johnvarvatos.com/on/demandware.store/Sites-johnvarvatos-Site/default?gclid=CJ3k3fLWtcgCFZWMaQoda-QM2g","img/mapImgs/johnv.jpeg");
+var nojoKicks = new customlocation ("Nojo Kicks", 42.3341983,-83.0485021, "Detroit's famous sneaker boutique. Add some glide to your stride. Spend <span class='bold'>eight minutes</span> here.", 500,
+    "http://www.nojokicks.com", "img/mapImgs/nojo.jpg");
 var campusMartius = new customlocation ("Campus Martius", 42.3317249, -83.0465006, "Get food and beverages while being entertained by live music and a variety of festivities. Spend <span class= 'bold'>ten minutes</span> here.", 600, "landmark",
-	"http://campusmartiuspark.org/", "http://media.mlive.com/detroit/photo/2013/06/12955429-standard.jpg");
-var comericaPark = new customlocation ("Comerica Park", 42.3389984, -83.0485197, "Catch a Tigers game or visit where they play! One of the best looking structures in the confines of Detroit. Spend <span class='bold'>six minutes</span> here.", 400, "landmark",
-	 "http://detroit.tigers.mlb.com/det/ballpark/","http://c1.staticflickr.com/3/2548/3790357643_157d98666b.jpg");
-var fordField = new customlocation ("Ford Field", 42.3389984, -83.0485197, "Catch a Lions game or visit where they lose! Spend <span class='bold'>eight minutes</span> here.", 400, "landmark",
-	"http://detroitlions.com/ford-field/","http://upload.wikimedia.org/wikipedia/commons/e/eb/Ford_Field_2007.JPG");
+    "http://campusmartiuspark.org/", "img/mapImgs/campus.jpg");
+var comericaPark = new customlocation ("Comerica Park", 42.3390023,-83.0507137, "Catch a Tigers game or visit where they play! One of the best looking structures in the confines of Detroit. Spend <span class='bold'>six minutes</span> here.", 400, "landmark",
+     "http://detroit.tigers.mlb.com/det/ballpark/","img/mapImgs/comericapark.jpg");
+var fordField = new customlocation ("Ford Field", 42.3400103,-83.047797, "Catch a Lions game or visit where they lose! Spend <span class='bold'>eight minutes</span> here.", 400, "landmark",
+    "http://detroitlions.com/ford-field/","img/mapImgs/fordfield.JPG");
 var detroitOperaHouse = new customlocation ("Detroit Opera House", 42.3389984, -83.0485197, "Check out the opulent performing arts venue! A place with style and class. Spend <span class='bold'>eight minutes</span> here.", 500, "landmark",
-	"http://www.michiganopera.org/","https://theatrehistoricalsociety.files.wordpress.com/2011/10/det-opra-hse.jpg");
+    "http://www.michiganopera.org/","img/mapImgs/opera.jpg");
 var foxTheater = new customlocation ("Fox Theater", 42.3383254, -83.0526774, "Check out the historical Fox Theater, where many famous performances have occurred. Motown acts as well as recent acts have perform here. Spend <span class='bold'>eight minutes</span> here.", 500, "landmark",
-	"http://www.olympiaentertainment.com/","http://3-media1.fl.yelpcdn.com/bphoto/7P8rEKHsX2RqsqcePAe4VQ/348s.jpg");
+    "http://www.olympiaentertainment.com/","img/mapImgs/foxtheatre.jpg");
 var sweetWaterTavern = new customlocation ("Sweet Water Tavern", 42.330522, -83.046867, "A great wing destination! Awesome food and spirits for your enjoyment. Spend <span class='bold'>five minutes</span> here.", 1800, "restaurant",
-	"http://www.sweetwatertavern.net","http://theatrehistoricalsociety.files.wordpress.com/2011/10/det-opra-hse.jpgs3-media4.fl.yelpcdn.com/bphoto/EXkIpzNJMz_FIEXgqiZUwA/348s.jpg");
-var harborHouse = new customlocation ("Harbor House", 42.330522, -83.046867, "Historic Sea Food Restaurant in our beloved Detroit city! Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant",
-	"http://harborhousemi.com","http://theatrehistoricalsociety.files.wordpress.com/2011/10/det-opra-hse.jpgmodeldmedia.com/galleries/Default/Dev%20News/Issue%20130/harborhouse-0003.jpg");
-var sportsMania = new customlocation ("Sports Mania", 42.330522, -83.046867, "Famous Detroit Sports Shop. Lions, Tigers, and Wings on the scene. Spend <span class='bold'> ten minutes</span> here.", 600, "shopping", 
-	"http://sportsmaniausa.com", "");
-var towerBarber = new customlocation ("Tower Barber", 42.330522, -83.046867, "Get a haircut at Detroit's famous barber shop! Spend <span class='bold'> twenty minutes</span> here.", 1200, "shopping",
-	"http://www.facebook.com/standardbarberco","");
-
-var detroitTattoo = new customlocation ("Detroit Tattoo Shop", 42.330522, -83.046867, "Pay a visit to Detroit's famous tattoo parlor. Some of the best artist are here. Spend <span class='bold'>ten minutes</span> here.", 600, "shopping",
-	"", "");
+    "http://www.sweetwatertavern.net","img/mapImgs/sweetwater.jpg");
+var harborHouse = new customlocation ("Harbor House", 42.3359678,-83.0458952, "Historic Sea Food Restaurant in our beloved Detroit city! Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant",
+    "http://harborhousemi.com","img/mapImgs/harbor.jpg");
+var sportsMania = new customlocation ("Sports Mania", 42.3344119,-83.045068, "Famous Detroit Sports Shop. Lions, Tigers, and Wings on the scene. Spend <span class='bold'> ten minutes</span> here.", 600, "shopping", 
+    "http://sportsmaniausa.com", "img/mapImgs/sports.jpg");
+var towerBarber = new customlocation ("Tower Barber", 42.3314736,-83.0470218, "Get a haircut at Detroit's famous barber shop! Spend <span class='bold'> twenty minutes</span> here.", 1200, "shopping",
+    "http://www.facebook.com/standardbarberco","img/mapImgs/barber.jpg");
+var detroitTattoo = new customlocation ("Detroit Tattoo Shop", 42.3309331,-83.1265796, "Pay a visit to Detroit's famous tattoo parlor. Some of the best artist are here. Spend <span class='bold'>ten minutes</span> here.", 600, "shopping",
+    "", "img/mapImgs/tattoo.jpg");
 var gardellaFurniture = new customlocation ("Gardella Furniture", 42.3519252, -83.0320371, "Opened in 1939 by Louis Gardella Sr. This store targets mid to high furniture buyers with antiquated taste. Spend <span class='bold'>ten minutes</span> here.", 600, "shopping",
-	"http://www.gardellafurniture.com", "");
+    "http://www.gardellafurniture.com", "img/mapImgs/gardella.jpg");
 var spectacles = new customlocation ("Spectacles", 42.3358422, -83.0464188, "Trendy unisex clothing store Spend <span class='bold'>ten minutes</span> here.", 600, "shopping",
-	"http://www.spectaclesdetroit.com","http://s3-media4.fl.yelpcdn.com/bphoto/kcDXXXbimPaLoUB4ZaBbBw/348s.jpg");
+    "img/mapImg/spectacles.jpg");
 var moosejaw = new customlocation ("Moosejaw", 42.3338298, -83.0489466, "More trendy unisex clothing!  Spend <span class='bold'>ten minutes</span> here.", 600, "shopping",
-	"http://www.moosejaw.com","http://fiveten.com/images/jreviews/5561_moosejaw_1264612747.jpg");
+    "http://www.moosejaw.com","img/mapImgs/moosejaw.jpg");
 var detroitVsEverybody = new customlocation ("Detroit Vs Everybody", 42.334167, -83.0432783, "Detroit's famous clothing and accessories store. Spend <span class='bold'>twenty minutes</span> here.", 1200, "shopping",
-	"http://detroitvseverybody.com","http://ecx.images-amazon.com/images/I/51fQeKEmH2L._SX342_.jpg");
+    "http://detroitvseverybody.com","img/mapImgs/detroitVS.jpg");
 var detroitWaterIce = new customlocation ("Detroit Water Ice", 42.3324303, -83.0473459, "Mitch Albom's new Detroit Dessert place. Spend <span class='bold'>ten minutes</span> here.", 600, "shopping",
-	"http://detroitwaterice.com","http://rivista-cdn.dbusiness.com/images/cache/cache_a/cache_1/cache_3/water-ice-fa58131a.jpeg?ver=1438701797&aspectratio=1.3322884012539");
+    "http://detroitwaterice.com","img/mapImgs/waterice.jpeg");
 var slices = new customlocation ("Slices", 42.3325434, -83.0477701, "Get amazing pizza at a great price! Spend <span class='bold'>ten minutes</span> here.", 600, "shopping", 
-	"http://www.slicespizzadetroit.com", "http://assets3.thrillist.com/v1/image/1399955/size/tl-horizontal_main/the-21-best-pizzas-in-michigan");
-var capitolPark = new customlocation ("Capitol Park", 42.3329106, -83.0494783, "Come see Detroit's famous landmark of liberty! Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://boyguv.com", "http://boyguv.com/var/capitolpark/storage/images/home/slide-show/slide-1/255-1-eng-US/slide-1_slide.jpg");
-var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://www.detroitmi.gov", "https://cbsdetroit.files.wordpress.com/2012/03/spiritofdetroit.jpg");
-var hartPlaza = new customlocation ("Hart Plaza", 42.327307, -83.0442621, "The area where Hart Plaza stands today is believed to be where Antoine Laumet de La Mothe, sieur de Cadillac landed in 1701. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://www.detroitmi.gov", "http://www.williamhenry.net/jh_16.jpg");
-var vicentes = new customlocation ("Vicente's Cuban Cuisine", 42.330522, -83.046867, "A great place to indulge in a Cuban lunch. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.vicente.us", "http://media.tumblr.com/tumblr_lj6qz1On5U1qh0bbs.jpg");
-var texasDeBrazil = new customlocation ("Texas De Brazil", 42.330522, -83.046867, "All you can eat steak house! Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.texasdebrazil.com", 
-	"http://extras.mnginteractive.com/live/media/site36/2007/1008/20071008__20071010_F5_FE10FDDINING~p1.JPG");
-var lafayetteConey = new customlocation ("Lafayette Coney Island", 42.330522, -83.046867, "Famous family owned and operated, since 1917. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.americanconeyisland.com", 
-	"http://cdn.onlyinyourstate.com/wp-content/uploads/2015/04/lafayette_American-700x469.jpg");
-var roast = new customlocation ("Roast", 42.330522, -83.046867, "Upscale Steakhouse. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.roastdetroit.com", "http://www.rantlifestyle.com/wp-content/uploads/2014/05/roast-detroit-michigan.jpg");
-var bucharest = new customlocation ("Bucharest Grill", 42.330522, -83.046867, "Get your middle eastern bites here! Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.bucharestgrill.com", "http://cdn.localeats.com/media/images/16544-0.jpg");
-var fishbones = new customlocation ("Fishbones", 42.330522, -83.046867, "Cajun Dishes. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.fishbonesusa.com", "http://static.tumblr.com/ce3994772c349a911812f86ca42143b8/p2cibu9/4XUmithzj/tumblr_static_fishbones_id.png");
+    "http://www.slicespizzadetroit.com", "img/mapImgs/slices.jpg");
+var capitolPark = new customlocation ("Capitol Park", 42.3329106, -83.0494783, "Come see Detroit's famous landmark of liberty! Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://boyguv.com", "img/mapImgs/capitalpark.jpg");
+var spiritOfDetroit = new customlocation ("Spirit of Detroit", 42.3293023, -83.0445377, "Pay a visit to the Spirit of Detroit statue, built in 1958, which represents the city of Detroit. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://www.detroitmi.gov", "img/mapImgs/spirit.jpg");
+var hartPlaza = new customlocation ("Hart Plaza", 42.327307, -83.0442621, "The area where Hart Plaza stands today is believed to be where Antoine Laumet de La Mothe, sieur de Cadillac landed in 1701. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://www.detroitmi.gov", "img/mapImgs/hartplaza.jpg");
+var vicentes = new customlocation ("Vicente's Cuban Cuisine", 42.330522, -83.046867, "A great place to indulge in a Cuban lunch. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.vicente.us", "img/mapImgs/vice.jpg");
+var texasDeBrazil = new customlocation ("Texas De Brazil", 42.3325726,-83.049359, "All you can eat steak house! Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.texasdebrazil.com", 
+    "img/mapImgs/texas.JPG");
+var lafayetteConey = new customlocation ("Lafayette Coney Island", 42.3314549,-83.0508622, "Famous family owned and operated, since 1917. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.americanconeyisland.com", 
+    "img/mapImgs/coney.jpg");
+var roast = new customlocation ("Roast", 42.3321731,-83.0527437, "Upscale Steakhouse. Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.roastdetroit.com", "img/mapImgs/roast.jpg");
+var bucharest = new customlocation ("Bucharest Grill", 42.3311869,-83.0709574, "Get your middle eastern bites here! Spend <span class='bold'>thirty minutes</span> here.", 1800, "restaurant", "http://www.bucharestgrill.com", "img/mapImgs/grill.jpg");
 
-var henryTheHatter = new customlocation ("Henry the Hatter", 42.334647, -83.0481404, "Detroit's exclusive hatter since 1893! Spend <span class='bold'>ten minutes</span> here.", 600, "shopping", "http://www.henrythehatterdetroit.com", "http://farm1.staticflickr.com/146/348031852_9181e6b73d.jpg");
-var detroitVape = new customlocation ("Detroit Vape and Hookah shop", 42.335512, -83.0490816, "For all hookah lovers! Spend <span class='bold'>twenty minutes</span> here.", 1200, "shopping", "http://www.yelp.com › shopping › Vape Shops", "http://s3-media1.fl.yelpcdn.com/bphoto/oCSdohh8D_-XC6JHONg30g/ls.jpg");
-var hazenMonument = new customlocation ("Hazen S. Pingree Monument", 42.3368128, -83.0532194, "The Hazen S. Pingree Monument honors a man who served as Detroit mayor from 1890 to 1897.  He was known as the 'idol of people'. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://historicdetroit.org/building/hazen-s-pingree-monument", "http://www.historicdetroit.org/image/2/324/0/5/images/mayburymain.jpg");
-var cotterMonument = new customlocation ("William Cotter Maybury Monument", 42.3370085, -83.0527677, "There’s a mustachioed mayor kicking back in Grand Circus Park. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "http://www.historicdetroit.org/building/william-cotter-maybury-monument", "http://www.historicdetroit.org/image/2/324/0/5/images/mayburymain.jpg");
-var russelFountain = new customlocation ("Russell A. Alger Memorial Fountain", 42.336863, -83.0521217, "The monument features a bronze statue of a woman about 7 feet tall wearing a headdress and a flowing gown and carrying a sword and a shield that bears the state seal. Spend <span class='bold'>ten minutes</span> here.", 600, "landmark", "https://www.linkedin.com/pub/dir/Russell/Fountain", "http://cdn4.vtourist.com/1/5973345-Grand_Circus_Park_Russell_A_Alger_Fountain-Detroit.jpg");
-var edisonFountain = new customlocation ("Edison Memorial Fountain", 42.3363073, -83.0534703, "Created to honor Thomas Alva Edison and his achievements. Spend <span class='bold'>thirty minutes</span> here.", 600, "landmark", "http://www.historicdetroit.org/building/edison-memorial-fountain/", "http://www.historicdetroit.org/image/2/324/0/5/images/emfmain.jpg");
-
-var allLocationsArray = [joseTacos, detroitBikes, easternMarket, johnVarvatos, nojoKicks,
+var allLocationsArray = [joseTacos, detroitBikes, johnVarvatos, nojoKicks,
 campusMartius, comericaPark, fordField, detroitOperaHouse, foxTheater, sweetWaterTavern,
 harborHouse, sportsMania, towerBarber, detroitTattoo, gardellaFurniture, spectacles, moosejaw,
 detroitVsEverybody, detroitWaterIce, slices, capitolPark, spiritOfDetroit,
@@ -231,6 +228,7 @@ function calcRoute(directionsService, directionsDisplay) {
 		destination: new google.maps.LatLng(userLat, userLong),
 		waypoints: 	makeWaypoints(), 
 		optimizeWaypoints: true,
+		// units: imperial,
 		travelMode: google.maps.TravelMode.WALKING
 	}, function(response, status) {
 		if (status ===google.maps.DirectionsStatus.OK) {
