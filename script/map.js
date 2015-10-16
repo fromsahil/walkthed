@@ -248,7 +248,7 @@ function calcRoute(directionsService, directionsDisplay) {
 				  });
 		
 			} else {
-				initMap();
+				initialize();
 			}
 		} else {
 			window.alert("Directions request failed due to" + status);
